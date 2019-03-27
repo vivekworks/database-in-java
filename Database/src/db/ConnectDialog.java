@@ -12,14 +12,14 @@ public class ConnectDialog extends JDialog implements ActionListener {
     JTextField host = new JTextField();
     JLabel lport = new JLabel("Port");
     JTextField port = new JTextField();
-    JLabel ltable = new JLabel("Table");
-    JTextField table = new JTextField();
+    JLabel ldatabase = new JLabel("Database");
+    JTextField database = new JTextField();
     JLabel luser = new JLabel("User");
     JTextField user = new JTextField();
     JLabel lpwd = new JLabel("Password");
-    JPasswordField pwd = new JPasswordField();
+    public JPasswordField pwd = new JPasswordField();
 
-    JButton ok = new JButton("OK");
+    JButton ok = new JButton("Ok");
     JButton cancel = new JButton("Cancel");
 
     Properties props;
@@ -35,14 +35,13 @@ public class ConnectDialog extends JDialog implements ActionListener {
         cancel.addActionListener(this);
         JPanel cpanel = new JPanel();
         JPanel cpanel2 = new JPanel();
-
-        setLayout(new GridLayout(5,2));
+        cpanel.setLayout(new GridLayout(5,2));
         cpanel.add(lhost);
         cpanel.add(host);
         cpanel.add(lport);
         cpanel.add(port);
-        cpanel.add(ltable);
-        cpanel.add(table);
+        cpanel.add(ldatabase);
+        cpanel.add(database);
         cpanel.add(luser);
         cpanel.add(user);
         cpanel.add(lpwd);
@@ -50,12 +49,20 @@ public class ConnectDialog extends JDialog implements ActionListener {
         cpanel2.add(ok);
         cpanel2.add(cancel);
         add(cpanel, BorderLayout.NORTH);
-        add(cpanel, BorderLayout.SOUTH);
+        add(cpanel2, BorderLayout.SOUTH);
     }
 
     public void actionPerformed(ActionEvent event){
         if(event.getSource() == ok)
             isCancelled = false;
         this.dispose();
+    }
+
+    public Properties getProps(){
+        props.setProperty("database",database.getText());
+        props.setProperty("username",user.getText());
+        props.setProperty("hostname",host.getText());
+        props.setProperty("port",port.getText());
+        return props;
     }
 }

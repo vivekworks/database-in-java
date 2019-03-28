@@ -5,7 +5,6 @@ import db.Connector;
 import db.Database;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
         Connector connector = new Connector(conn.getProps(), new String(conn.pwd.getPassword()));
         if(!connector.open())
             System.exit(0);
-        frame.getContentPane().add(new Database());
+        frame.getContentPane().add(new Database(connector));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(750,800);
         frame.setVisible(true);

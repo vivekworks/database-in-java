@@ -27,7 +27,7 @@ public class ConnectDialog extends JDialog implements ActionListener {
     public ConnectDialog(JFrame owner, String title, Properties p){
         super(owner, title, true);
         setSize(300,200);
-        setLocation(250,400);
+        setLocation(650,250);
         props = new Properties(p);
         ok.setPreferredSize(new Dimension(75,25));
         ok.addActionListener(this);
